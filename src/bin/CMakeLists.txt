@@ -1,5 +1,5 @@
 ################################################################################
-# First example: compiling a binary that depends on libibex-plugin
+# First example: compiling a binary that depends on libibex-myplugin
 ################################################################################
 # source files of bin1
 list (APPEND SRC1 ${CMAKE_CURRENT_SOURCE_DIR}/bin1.cpp
@@ -9,7 +9,7 @@ list (APPEND SRC1 ${CMAKE_CURRENT_SOURCE_DIR}/bin1.cpp
 
 # Create the target for bin1
 add_executable (bin1 ${SRC1})
-target_link_libraries (bin1 PUBLIC ibex-plugin)
+target_link_libraries (bin1 PUBLIC ibex-myplugin)
 
 # install the binary
 install (TARGETS bin1 DESTINATION ${CMAKE_INSTALL_BINDIR})
@@ -25,11 +25,7 @@ list (APPEND SRC2 ${CMAKE_CURRENT_SOURCE_DIR}/bin2.cpp
 
 # Create the target for bin2
 add_executable (bin2 ${SRC2})
-# Using ${IBEX_*} variables (set by CMake using pkg-config) to compile the
-# library
-target_compile_options (bin2 PUBLIC ${IBEX_CFLAGS})
-target_include_directories (bin2 PUBLIC ${IBEX_INCLUDE_DIRS})
-target_link_libraries (bin2 PUBLIC ${IBEX_LDFLAGS})
+target_link_libraries (bin2 PUBLIC Ibex::ibex)
 
 # install the binary
 install (TARGETS bin2 DESTINATION ${CMAKE_INSTALL_BINDIR})
