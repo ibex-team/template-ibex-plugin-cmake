@@ -5,8 +5,8 @@ To customize this template, one can change these two lines in
 [CMakeLists.txt](./CMakeLists.txt):
 
 ```
-project (IBEX_PLUGIN VERSION 0.42 LANGUAGES CXX)
-set (IBEX_PLUGIN_DESCRIPTION "Short description of the plugin")
+project (IBEX_MYPLUGIN VERSION 0.42 LANGUAGES CXX)
+set (IBEX_MYPLUGIN_DESCRIPTION "Short description of the plugin")
 ```
 
 with the actual name, version and description of the plugin.
