@@ -18,3 +18,15 @@ the compilation of a binary.
 One can remove the lines corresponding to examples that are not needed and can
 customize the other ones (mostly by appending new source files and changing the
 name of the targets).
+
+# Dependencies
+
+If your plugin requires ibex to be installed with a linear programming library, add these lines in the [CMakeLists.txt](./CMakeLists.txt):
+
+```
+# check if Ibex was compiled with an linear programming library
+ibex_check_have_lp_lib (HAVE_LP_LIB)
+if (NOT HAVE_LP_LIB)
+  message (FATAL_ERROR "A Linear Programming library is needed for this plugin")
+endif ()
+```
