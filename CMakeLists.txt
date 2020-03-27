@@ -15,4 +15,7 @@ add_subdirectory (src)
 ################################################################################
 # Tests
 ################################################################################
+# The following command assumes that the tests are in a tests/ subdirectory. So
+# the tests/ subdirectory must exist and must contain a CMakeLists.txt file.
+# If this is not the case, comment the next line.
 add_make_target_for_ctest (check)
