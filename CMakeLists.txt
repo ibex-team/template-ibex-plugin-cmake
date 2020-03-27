@@ -7,6 +7,14 @@ find_package (IBEX 2.8.6 REQUIRED)
 message (STATUS "Found Ibex version ${IBEX_VERSION}")
 ibex_init_common () # Ibex should have installed this function
 
+# The following lines test if the found version of Ibex was compiled with a
+# linear programming library. If you need to perform this test, uncomment the
+# next lines.
+#ibex_check_have_lp_lib (HAVE_LP_LIB)
+#if (NOT HAVE_LP_LIB)
+#  message (FATAL_ERROR "A Linear Programming library is needed for this plugin")
+#endif ()
+
 ################################################################################
 # Compile sources
 ################################################################################
