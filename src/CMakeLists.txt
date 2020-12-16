@@ -10,13 +10,15 @@ list (APPEND SRC ${CMAKE_CURRENT_SOURCE_DIR}/ibex_Plugin.cpp
 
 # Create the target for libibex-myplugin
 add_library (ibex-myplugin ${SRC})
-# TODO BUILD_INTERFACE and INSTALL_INTERFACE for inc dirs
-target_include_directories (ibex-myplugin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (ibex-myplugin PUBLIC
+                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+                            "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 target_link_libraries (ibex-myplugin PUBLIC Ibex::ibex)
 
 # installation of libibex-myplugin files
-list_filter_header (HDR ${SRC}) # Ibex should have installed this function
-install (TARGETS ibex-myplugin DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ibex_list_filter_header (HDR ${SRC}) # Ibex should have installed this function
+install (TARGETS ibex-myplugin EXPORT MyPluginExport
+                               DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install (FILES ${HDR} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ibex-myplugin)
 
 ################################################################################
