@@ -40,6 +40,7 @@ file and CMake config file. If your plugin is installing a library, you must:
   `ibex-myplugin-config.cmake.in`;
   - change the paths accordingly in [CMakeLists.txt](./CMakeLists.txt);
   - check that all the variables and fields have the correct values.
+
 If your plugin is not installing a library, you can:
   - remove the two files mentioned above;
   - remove in [CMakeLists.txt](./CMakeLists.txt) the code generation them.
