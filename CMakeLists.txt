@@ -8,7 +8,7 @@ set (IBEX_MIN_VERSION_REQ 2.8.9.1)
 find_package (IBEX ${IBEX_MIN_VERSION_REQ} REQUIRED)
 message (STATUS "Found Ibex version ${IBEX_VERSION}")
 ibex_init_common () # Ibex should have installed this function
-set (CMAKE_INSTALL_CONFIGCMAKE "share/ibex-myplugin/cmake")
+set (CMAKE_INSTALL_CONFIGCMAKE "share/ibex_myplugin/cmake")
 
 # Interval and linear programming names and versions are available
 message (STATUS "Ibex was compiled with interval library "
@@ -37,16 +37,16 @@ add_subdirectory (src)
 ################################################################################
 # Generate CMake config file (can be removed if no library is installed)
 ################################################################################
-set (IBEX_MYPLUGIN_TARGETS_FILE "ibex-myplugin-targets.cmake")
-install (EXPORT MyPluginExport FILE ${IBEX_MYPLUGIN_TARGETS_FILE}
+set (IBEX_MYPLUGIN_TARGETS_CONFIG_FILE "ibex_myplugin-targets.cmake")
+install (EXPORT MyPluginExport FILE ${IBEX_MYPLUGIN_TARGETS_CONFIG_FILE}
                                 NAMESPACE Ibex::
                                 DESTINATION ${CMAKE_INSTALL_CONFIGCMAKE})
-configure_file (ibex-myplugin-config.cmake.in ibex-myplugin-config.cmake @ONLY)
+configure_file (ibex-myplugin-config.cmake.in ibex_myplugin-config.cmake @ONLY)
 include (CMakePackageConfigHelpers)
-set (VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/ibex-myplugin-config-version.cmake")
+set (VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/ibex_myplugin-config-version.cmake")
 write_basic_package_version_file (${VERSION_FILE} COMPATIBILITY AnyNewerVersion)
 install (FILES ${VERSION_FILE}
-               ${CMAKE_CURRENT_BINARY_DIR}/ibex-myplugin-config.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/ibex_myplugin-config.cmake
          DESTINATION ${CMAKE_INSTALL_CONFIGCMAKE})
 
 ################################################################################
